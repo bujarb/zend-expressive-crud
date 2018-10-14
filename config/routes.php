@@ -38,4 +38,5 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     $app->post('/user/add', App\Handler\UserHandler::class, 'user.add');
 
     $app->get('/users',\App\Handler\User\UserListHandler::class,'user.list');
+    $app->post('/user/create',\App\Handler\User\UserCreateHandler::class,'user.create');
 };

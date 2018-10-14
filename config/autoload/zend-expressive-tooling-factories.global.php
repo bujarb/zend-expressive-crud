@@ -14,6 +14,7 @@ return [
         'factories' => [
             App\Acton\TestAction::class => App\Acton\TestActionFactory::class,
             App\Handler\UserHandler::class => App\Handler\UserHandlerFactory::class,
+            App\Handler\User\UserCreateHandler::class => App\Handler\User\UserCreateHandlerFactory::class,
             App\Handler\User\UserListHandler::class => App\Handler\User\UserListHandlerFactory::class,
             App\Middleware\Test::class => App\Middleware\TestFactory::class,
         ],
