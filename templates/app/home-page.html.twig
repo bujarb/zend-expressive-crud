@@ -1,0 +1,27 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+
+            <h1 class="text-center">{{ name is defined ? name : ""}}</h1>
+            {{ name is defined ? "<hr>": "" }}
+
+            <form action="{{ form.getAttributes()['action'] }}" method="{{ form.getAttributes()['method'] }}">
+
+                <label for="" class="label">{{  form.get('name').getLabel() }}</label>
+                <input type="{{ form.get('name').getAttributes()['type'] }}"
+                       name="{{ form.get('name').getAttributes()['name'] }}"
+                       class="{{ form.get('name').getAttributes()['class'] }}"
+                       placeholder="{{ form.get('name').getAttributes()['placeholder'] }}"
+                       style="margin-bottom: 5px;">
+
+                <button type="{{ form.get('submit').getAttributes()['type'] }}" class="{{ form.get('submit').getAttributes()['class'] }}">{{ form.get('submit').getValue() }}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
