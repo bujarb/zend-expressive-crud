@@ -42,24 +42,20 @@ class User implements \JsonSerializable
      */
     private $password;
 
-    /**
-     * Application constructor.
-     * @param $name
-     */
-    public function __construct(){}
+    public function parseData($data){
 
-    public function saveUser($data){
+        try{
 
-        foreach ($data as $key => $d){
+            foreach ($data as $key => $d){
 
-            $this->{$key} = $d;
+                $this->{$key} = $d;
 
+            }
+
+        }catch (\Exception $e){
+            echo $e->getMessage();die;
         }
 
-    }
-
-    public function setName($name){
-        $this->first_name = $name;
     }
 
     public function jsonSerialize()

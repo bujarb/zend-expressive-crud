@@ -42,7 +42,7 @@ class UserEditHandler implements RequestHandlerInterface
 
             try{
 
-                $user->saveUser($body);
+                $user->parseData($body);
 
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();

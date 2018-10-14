@@ -21,27 +21,18 @@ use Zend\Expressive\ZendView\ZendViewRenderer;
 class HomePageHandler implements RequestHandlerInterface
 {
     private $containerName;
-
     private $router;
-
-    private $template;
-
-    private $entityManager;
 
     public function __construct(
         Router\RouterInterface $router,
-        Template\TemplateRendererInterface $template = null,
-        string $containerName,
-        EntityManager $entityManager
+        string $containerName
     ) {
         $this->router        = $router;
-        $this->template      = $template;
         $this->containerName = $containerName;
-        $this->entityManager = $entityManager;
     }
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        return new JsonResponse($this->entityManager->getRepository('App\Entity\User')->findAll());
+        return new JsonResponse("API for CRUD with Zend Expressive 3");
     }
 }

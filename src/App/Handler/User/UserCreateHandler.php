@@ -42,7 +42,7 @@ class UserCreateHandler implements RequestHandlerInterface
             try{
 
                 $user = new User();
-                $user->saveUser($body);
+                $user->parseData($body);
 
                 $this->entity_manager->persist($user);
                 $this->entity_manager->flush();
