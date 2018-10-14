@@ -48,10 +48,6 @@ class User implements \JsonSerializable
      */
     public function __construct(){}
 
-    public function setPassword($password){
-        $this->password = $password;
-    }
-
     public function saveUser($data){
 
         foreach ($data as $key => $d){
@@ -60,6 +56,10 @@ class User implements \JsonSerializable
 
         }
 
+    }
+
+    public function setName($name){
+        $this->first_name = $name;
     }
 
     public function jsonSerialize()

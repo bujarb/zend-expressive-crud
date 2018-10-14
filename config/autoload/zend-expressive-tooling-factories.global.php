@@ -17,6 +17,7 @@ return [
             App\Handler\User\DeleteUserHandler::class => App\Handler\User\DeleteUserHandlerFactory::class,
             App\Handler\User\UserCreateHandler::class => App\Handler\User\UserCreateHandlerFactory::class,
             App\Handler\User\UserDeleteHandler::class => App\Handler\User\UserDeleteHandlerFactory::class,
+            App\Handler\User\UserEditHandler::class => App\Handler\User\UserEditHandlerFactory::class,
             App\Handler\User\UserListHandler::class => App\Handler\User\UserListHandlerFactory::class,
             App\Middleware\Test::class => App\Middleware\TestFactory::class,
             App\User\DeleteUserHandler::class => App\User\DeleteUserHandlerFactory::class,

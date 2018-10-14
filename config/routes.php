@@ -40,4 +40,5 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     $app->get('/users',\App\Handler\User\UserListHandler::class,'user.list');
     $app->post('/user/create',\App\Handler\User\UserCreateHandler::class,'user.create');
     $app->get('/user/delete/{id}',\App\Handler\User\UserDeleteHandler::class,'user.delete');
+    $app->post('/user/edit/{id}',\App\Handler\User\UserEditHandler::class,'user.edit');
 };

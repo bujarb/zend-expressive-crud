@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Handler\User;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityManager;
-use PHPUnit\Util\Json;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -13,7 +13,7 @@ use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
-class UserDeleteHandler implements RequestHandlerInterface
+class UserEditHandler implements RequestHandlerInterface
 {
     /**
      * @var TemplateRendererInterface
@@ -34,17 +34,25 @@ class UserDeleteHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         $id = (int)$request->getAttribute('id');
+        $body = $request->getParsedBody();
+
         $user = $this->entityManager->find('App\Entity\User',$id);
 
-        if ($user === null){
+        if ($user !== null){
 
-            return new JsonResponse("The user was not found");
+            try{
+
+                $user->saveUser($body);
+
+                $this->entityManager->persist($user);
+                $this->entityManager->flush();
+
+                return new JsonResponse('User was updated successfuly');
+
+            }catch (\Exception $e){
+                echo $e->getMessage();die;
+            }
 
         }
-
-        $this->entityManager->remove($user);
-        $this->entityManager->flush();
-
-        return new JsonResponse('The user was successfuly deleted');
     }
 }
