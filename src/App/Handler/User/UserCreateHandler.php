@@ -6,10 +6,12 @@ namespace App\Handler\User;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
+use PHPUnit\Util\Json;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\JsonResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 class UserCreateHandler implements RequestHandlerInterface
@@ -41,8 +43,11 @@ class UserCreateHandler implements RequestHandlerInterface
 
                 $user = new User();
                 $user->saveUser($body);
+
                 $this->entity_manager->persist($user);
                 $this->entity_manager->flush();
+
+                return new JsonResponse(['Successfuly created a new User']);
 
             }catch (\Exception $e){
                 echo $e->getMessage();

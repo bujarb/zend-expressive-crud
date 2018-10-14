@@ -14,9 +14,12 @@ return [
         'factories' => [
             App\Acton\TestAction::class => App\Acton\TestActionFactory::class,
             App\Handler\UserHandler::class => App\Handler\UserHandlerFactory::class,
+            App\Handler\User\DeleteUserHandler::class => App\Handler\User\DeleteUserHandlerFactory::class,
             App\Handler\User\UserCreateHandler::class => App\Handler\User\UserCreateHandlerFactory::class,
+            App\Handler\User\UserDeleteHandler::class => App\Handler\User\UserDeleteHandlerFactory::class,
             App\Handler\User\UserListHandler::class => App\Handler\User\UserListHandlerFactory::class,
             App\Middleware\Test::class => App\Middleware\TestFactory::class,
+            App\User\DeleteUserHandler::class => App\User\DeleteUserHandlerFactory::class,
         ],
     ],
 ];
